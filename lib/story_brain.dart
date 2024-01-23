@@ -3,10 +3,16 @@ import 'story.dart';
 
 //TODO: Step 5 - Create a new class called StoryBrain.
 class StoryBrain {
+  String _lang = 'Eng';
+
+  StoryBrain({required String lang}) {
+    this._lang = lang;
+  }
 //TODO: Step 7 - Uncomment the lines below to include storyData as a private property in StoryBrain.
 // Hint: You might need to change something in story.dart to make this work.
 
-  List<Story> _storyData = [
+
+  List<Story> _storyDataEng = [
     Story(
         storyTitle:
             'Your car has blown a tire on a winding road in the middle of nowhere with no cell phone reception. You decide to hitchhike. A rusty pickup truck rumbles to a stop next to you. A man with a wide brimmed hat with soulless eyes opens the passenger door for you and asks: "Need a ride, boy?".',
@@ -38,25 +44,116 @@ class StoryBrain {
         choice2: '')
   ];
 
+  List<Story> _storyDataThai = [
+    Story(
+        storyTitle:
+            'รถของคุณยางแตกบนถนนที่คดเคี้ยวในที่ห่างไกลโดยไม่มีสัญญาณโทรศัพท์มือถือ คุณตัดสินใจที่จะโบกรถ รถกระบะขึ้นสนิมดังกึกก้องมาจอดข้างคุณ ชายคนหนึ่งที่สวมหมวกปีกกว้างและมีดวงตาไร้วิญญาณเปิดประตูผู้โดยสารให้คุณแล้วถามว่า: "ต้องการนั่งรถไหม ไอ้หนู?".',
+        choice1: 'ฉันจะเข้าไปแล้ว ขอบคุณสำหรับความช่วยเหลือ!',
+        choice2: 'ควรถามเขาก่อนว่าเขาเป็นฆาตกรก่อน'),
+    Story(
+        storyTitle: 'เขาพยักหน้าช้าๆ โดยไม่สนใจคำถาม',
+        choice1: 'อย่างน้อยเขาก็ซื่อสัตย์ ฉันจะปีนเข้าไป',
+        choice2: 'เดี๋ยวก่อน ฉันรู้วิธีเปลี่ยนยาง'),
+    Story(
+        storyTitle:
+            'เมื่อคุณเริ่มขับรถ คนแปลกหน้าก็เริ่มพูดถึงความสัมพันธ์ของเขากับแม่ของเขา เขาเริ่มโกรธและโกรธมากขึ้นทุกนาที เขาขอให้คุณเปิดช่องเก็บของ ข้างในคุณจะพบมีดเปื้อนเลือด นิ้วสองนิ้วที่ขาด และเทปคาสเซ็ตต์ของเอลตัน จอห์น เขาเอื้อมมือไปหยิบกล่องถุงมือ',
+        choice1: 'ฉันรักเอลตัน จอห์น! ส่งเทปคาสเซ็ทให้เขา',
+        choice2: 'เป็นเขาหรือฉัน! คุณหยิบมีดแล้วแทงเขา'),
+    Story(
+        storyTitle:
+            'อะไร? ตำรวจขนาดนั้นออกไป! คุณรู้หรือไม่ว่าอุบัติเหตุจราจรเป็นสาเหตุอันดับที่สองของการเสียชีวิตจากอุบัติเหตุในกลุ่มผู้ใหญ่ส่วนใหญ่',
+        choice1: 'รีสตาร์ท',
+        choice2: ''),
+    Story(
+        storyTitle:
+            'เมื่อคุณชนทะลุรั้วและมองไปยังหินขรุขระด้านล่าง คุณจะสะท้อนถึงภูมิปัญญาที่น่าสงสัยของการแทงใครบางคนในขณะที่พวกเขากำลังขับรถที่คุณอยู่',
+        choice1: 'รีสตาร์ท',
+        choice2: ''),
+    Story(
+        storyTitle:
+            'คุณผูกพันกับฆาตกรในขณะที่ร้องท่อน "คุณรู้สึกถึงความรักคืนนี้ได้ไหม" เขาไปส่งคุณที่เมืองถัดไป ก่อนที่คุณจะไปเขาจะถามคุณว่าคุณรู้จักสถานที่ทิ้งศพที่ดีหรือไม่ คุณตอบกลับ: "ลองท่าเรือ".',
+        choice1: 'รีสตาร์ท',
+        choice2: '')
+  ];
+
 //TODO: Step 23 - Use the storyNumber property inside getStory(), getChoice1() and getChoice2() so that it gets the updated story and choices rather than always just the first (0th) one.
 
 //TODO: Step 8 - Create a method called getStory() that returns the first storyTitle from _storyData.
 
+  String getStory() {
+    if (_lang == 'Eng') {
+      return _storyDataEng[_storyNumber].storyTitle;
+    } else {
+      return _storyDataThai[_storyNumber].storyTitle;
+    }
+  }
+
 //TODO: Step 11 - Create a method called getChoice1() that returns the text for the first choice1 from _storyData.
 
+  String getChoice1() {
+    if (_lang == 'Eng') {
+      return _storyDataEng[_storyNumber].choice1;
+    } else {
+      return _storyDataThai[_storyNumber].choice1;
+    }
+  }
+
 //TODO: Step 12 - Create a method called getChoice2() that returns the text for the first choice2 from _storyData.
+  String getChoice2() {
+    if (_lang == 'Eng') {
+      return _storyDataEng[_storyNumber].choice2;
+    } else {
+      return _storyDataThai[_storyNumber].choice2;
+    }
+  }
 
 //TODO: Step 25 - Change the storyNumber property into a private property so that only story_brain.dart has access to it. You can do this by right clicking on the name (storyNumber) and selecting Refactor -> Rename to make the change across all the places where it's used.
 
 //TODO: Step 16 - Create a property called storyNumber which starts with a value of 0. This will be used to track which story the user is currently viewing.
+  int _storyNumber = 0;
+  int getStoryNumber() {
+    return _storyNumber;
+  }
 
 //TODO: Step 17 - Create a method called nextStory(), it should not have any outputs but it should have 1 input called choiceNumber which will be the choice number (int) made by the user.
+  int nextStory(int choiceNumber) {
+    if (_storyNumber == 0) {
+      if (choiceNumber == 1) {
+        _storyNumber = 2;
+      } else {
+        _storyNumber = 1;
+      }
+    } else if (_storyNumber == 1) {
+      if (choiceNumber == 1) {
+        _storyNumber = 2;
+      } else {
+        _storyNumber = 3;
+      }
+    } else if (_storyNumber == 2) {
+      if (choiceNumber == 1) {
+        _storyNumber = 5;
+      } else {
+        _storyNumber = 4;
+      }
+    } else {
+      if (choiceNumber == 1) {
+        _storyNumber = 0;
+      }
+    }
+    return _storyNumber;
+  }
+//TODO: Step 20 - -ok-Download the story plan here: https://drive.google.com/uc?export=download&id=1KU6EghkO9Hf2hRM0756xFHgNaZyGCou3
 
-//TODO: Step 20 - Download the story plan here: https://drive.google.com/uc?export=download&id=1KU6EghkO9Hf2hRM0756xFHgNaZyGCou3
+//TODO: Step 21 - ok-Using the story plan, update nextStory() to change the storyNumber depending on the choice made by the user. e.g. if choiceNumber was equal to 1 and the storyNumber is 0, the storyNumber should become 2.
 
-//TODO: Step 21 - Using the story plan, update nextStory() to change the storyNumber depending on the choice made by the user. e.g. if choiceNumber was equal to 1 and the storyNumber is 0, the storyNumber should become 2.
-
-//TODO: Step 22 - In nextStory() if the storyNumber is equal to 3 or 4 or 5, that means it's the end of the game and it should call a method called restart() that resets the storyNumber to 0.
+//TODO: Step 22 - ok-In nextStory() if the storyNumber is equal to 3 or 4 or 5, that means it's the end of the game and it should call a method called restart() that resets the storyNumber to 0.
 
 //TODO: Step 27 - Create a method called buttonShouldBeVisible() which checks to see if storyNumber is 0 or 1 or 2 (when both buttons should show choices) and return true if that is the case, else it should return false.
+  bool buttonShouldBeVisible() {
+    if (_storyNumber <= 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
